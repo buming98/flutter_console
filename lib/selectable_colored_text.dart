@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
 
 // REF: https://stackoverflow.com/questions/68604853/set-the-color-of-selected-text
 class SelectableColoredText extends StatefulWidget {
@@ -27,8 +28,10 @@ class _SelectableColoredTextState extends State<SelectableColoredText> {
 
   @override
   Widget build(BuildContext context) {
-    final int start = _start ?? widget.text.length;
-    final int end = _end ?? widget.text.length;
+    int start = _start ?? widget.text.length;
+    int end = _end ?? widget.text.length;
+    start = min(start, widget.text.length);
+    end = min(end, widget.text.length);
     return SelectableText.rich(
       TextSpan(
         style: widget.style ?? Theme.of(context).textTheme.bodyText2,

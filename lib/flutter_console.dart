@@ -1,10 +1,10 @@
 library flutter_console_widget;
 
-export 'package:flutter_console_widget/flutter_console_controller.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_console_widget/flutter_console_controller.dart';
 import 'package:flutter_console_widget/selectable_colored_text.dart';
+
+export 'package:flutter_console_widget/flutter_console_controller.dart';
 
 class FlutterConsole extends StatelessWidget {
   const FlutterConsole({
@@ -79,64 +79,6 @@ class FlutterConsole extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        color: inputBackground,
-                        padding: const EdgeInsets.only(bottom: 5.0),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: inputTextColor,
-                              size: 20,
-                            ),
-                            Flexible(
-                              child: TextField(
-                                autofocus: true,
-                                keyboardType: consoleData.keyboardType,
-                                controller: controller.inputController,
-                                focusNode: controller.focusNode,
-                                cursorColor: inputTextColor,
-                                style: TextStyle(color: inputTextColor),
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: inputBackground,
-                                  border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.only(
-                                    right: 10,
-                                    left: 5,
-                                  ),
-                                ),
-                                onSubmitted: (value) {
-                                  if (!controller.completer.isCompleted) {
-                                    controller.completer.complete(
-                                      value,
-                                    );
-                                  }
-                                },
-                              ),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: consoleBackground,
-                              ),
-                              onPressed: () {
-                                if (!controller.completer.isCompleted) {
-                                  controller.completer.complete(
-                                    controller.inputController.text,
-                                  );
-                                }
-                              },
-                              child: const Icon(Icons.done),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 );
